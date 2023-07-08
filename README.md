@@ -52,7 +52,7 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
         mkdir roles
         cd roles
 
-    Create the skeletal folder structure for Control, nginx, apache2, the demo app and mysql using the commands below:
+    Create the skeletal folder structure for Control, nginx, apache2, the demo app and mysql using the commands below inside the newly created roles folder:
 
         ansible-galaxy init control
         ansible-galaxy init nginx
@@ -146,7 +146,7 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
             - name: get server hostname
               command: hostname
 
-        # See playbooks/hostname.yml for complete code
+    # See playbooks/hostname.yml for complete code
 
 5b. Control
 
