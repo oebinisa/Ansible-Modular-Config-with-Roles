@@ -154,22 +154,22 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
 
     Create control.yml:
 
-        ---
-        - hosts: control
-          become: true
-          roles:
-            - control   # Points to the specific folder to look into for commands
+            ---
+            - hosts: control
+            become: true
+            roles:
+              - control   # Points to the specific folder to look into for commands
 
     # See control.yml for complete code
 
     Update roles/control/tasks/main.yml with the necessary tasks
 
-        ---
-        - name: install tools
-          apt: name={{item}} state=present update_cache=yes
-          with_items:
-            - curl
-            - python-httplib2
+            ---
+            - name: install tools
+            apt: name={{item}} state=present update_cache=yes
+            with_items:
+              - curl
+              - python-httplib2
 
         # See roles/control/tasks/main.yml for complete code
 
