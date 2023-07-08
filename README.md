@@ -170,7 +170,8 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
           with_items:
             - curl
             - python-httplib2
-    # See roles/control/tasks/main.yml for complete code
+
+        # See roles/control/tasks/main.yml for complete code
 
     Create loadbalancer.yml:
 
