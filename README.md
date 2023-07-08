@@ -138,7 +138,7 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
 
     Install and configure them accordingly
 
-a. Create main playbooks/hostname.yml:
+    5a. Create main playbooks/hostname.yml:
 
         ---
         - hosts: all
@@ -148,7 +148,7 @@ a. Create main playbooks/hostname.yml:
 
     # See playbooks/hostname.yml for complete code
 
-b. Control
+    5b. Control
 
     This would help to update and install all dependencies on the Control Machine
 
