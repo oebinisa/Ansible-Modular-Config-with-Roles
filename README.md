@@ -146,7 +146,7 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
             - name: get server hostname
               command: hostname
 
-    # See playbooks/hostname.yml for complete code
+    See playbooks/hostname.yml for complete code
 
     5b. Control
 
@@ -160,7 +160,7 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
           roles:
             - control   # Points to the specific folder to look into for commands
 
-    # See control.yml for complete code
+        See control.yml for complete code
 
     Update roles/control/tasks/main.yml with the necessary tasks
 
