@@ -47,6 +47,44 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
 
 2.  Create a Project folder.
 
+    Create the roles folder inside the project folder
+
+        mkdir roles
+        cd roles
+
+    Create the skeletal folder structure for Control, nginx, apache2, the demo app and mysql using the commands below:
+
+        ansible-galaxy init control
+        ansible-galaxy init nginx
+        ansible-galaxy init apache2
+        ansible-galaxy init demo_app
+        ansible-galaxy init mysql
+
+    Your resulting folder would look like below:
+
+        .
+        ├── roles
+        │   ├── apache2
+        │   ├── control
+        │   │   ├── defaults
+        │   │   │   └── main.yml
+        │   │   ├── files
+        │   │   ├── handlers        # All handler codes for control go here
+        │   │   │   └── main.yml
+        │   │   ├── meta
+        │   │   │   └── main.yml
+        │   │   ├── tasks           # All task codes for control go here
+        │   │   │   └── main.yml
+        │   │   ├── templates
+        │   │   ├── tests
+        │   │   │   ├── inventory
+        │   │   │   └── test.yml
+        │   │   └── vars
+        │   │       └── main.yml
+        │   ├── demo_app
+        │   ├── mysql
+        │   └── nginx
+
     Concluding folder content/structure:
 
         .
@@ -100,7 +138,7 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
 
     Install and configure them accordingly
 
-    Create main playbooks/hostname.yml:
+5a. Create main playbooks/hostname.yml:
 
         ---
         - hosts: all
@@ -110,21 +148,29 @@ Basic Ansible configuration to set up a 3-tier web application architecture cons
 
         # See playbooks/hostname.yml for complete code
 
-    Create control.yml:
+5b. Control
 
     This would help to update and install all dependencies on the Control Machine
+
+    Create control.yml:
 
         ---
         - hosts: control
           become: true
-          tasks:
-            - name: install tools
-            apt: name={{item}} state=present update_cache=yes
-            with_items:
-                - curl
-                - python-httplib2
+          roles:
+            - control   # Points to the specific folder to look into for commands
 
-        # See control.yml for complete code
+    # See control.yml for complete code
+
+    Update roles/control/tasks/main.yml with the necessary tasks
+
+        ---
+        - name: install tools
+          apt: name={{item}} state=present update_cache=yes
+          with_items:
+            - curl
+            - python-httplib2
+    # See roles/control/tasks/main.yml for complete code
 
     Create loadbalancer.yml:
 
