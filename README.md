@@ -528,7 +528,7 @@ Use the _limit_ option to limit the execution a few or a single/specific server 
 
     ansible-playbook site.yml --limit app01
 
-**Limiting Execution by Hosts:**
+**Limiting Execution by Tasks (using Tags):**
 
 To select specific task(s) and apply to our hosts, use tags
 
